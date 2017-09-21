@@ -1,8 +1,6 @@
 
 package com.businessbook.phonebook.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -28,7 +26,6 @@ public class Contact {
         return id;
     }
 
-    @JsonIgnore
     public void setId(Long id) {
         this.id = id;
     }

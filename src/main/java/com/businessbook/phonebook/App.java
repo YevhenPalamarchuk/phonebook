@@ -11,6 +11,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import com.businessbook.phonebook.config.PhonebookConfiguration;
 import com.businessbook.phonebook.config.SpringConfiguration;
 import com.businessbook.phonebook.config.SpringContextLoaderListener;
+import com.businessbook.phonebook.exception.EmptyResultDataAccessExceptionMapper;
 import com.businessbook.phonebook.resources.ContactResource;
 import com.codahale.metrics.health.HealthCheck;
 
@@ -60,6 +61,7 @@ public class App extends Application<PhonebookConfiguration> {
         environment.servlets().addServletListeners(new SpringContextLoaderListener(context));
         final ContactResource contactResource = new ContactResource();
         environment.jersey().register(contactResource);
+        environment.jersey().register(new EmptyResultDataAccessExceptionMapper());
     }
 
     private void registerResources(Environment environment, AnnotationConfigWebApplicationContext context) {
